@@ -17,6 +17,8 @@ module.exports = {
     modules: ['client', 'node_modules'],
   },
   module: {
+    unknownContextCritical: false,
+    unknownContextRegExp: /^.\/.*$/,
     rules: [
       {
         test: /\.s?css$/,

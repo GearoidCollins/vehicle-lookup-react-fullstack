@@ -70,15 +70,15 @@ const validateSecureMode = function (config) {
     return true;
   }
 
-  const privateKey = fs.existsSync(path.resolve(config.secure.privateKey));
-  const certificate = fs.existsSync(path.resolve(config.secure.certificate));
+  // const privateKey = fs.existsSync(path.resolve(config.secure.privateKey));
+  // const certificate = fs.existsSync(path.resolve(config.secure.certificate));
 
-  if (!privateKey || !certificate) {
-    console.log(chalk.red('+ Error: Certificate file or key file is missing, falling back to non-SSL mode'));
-    console.log(chalk.red('  To create them, simply run the following from your shell: sh ./scripts/generate-ssl-certs.sh'));
-    console.log();
-    config.secure.ssl = false;
-  }
+  // if (!privateKey || !certificate) {
+  //   console.log(chalk.red('+ Error: Certificate file or key file is missing, falling back to non-SSL mode'));
+  //   console.log(chalk.red('  To create them, simply run the following from your shell: sh ./scripts/generate-ssl-certs.sh'));
+  //   console.log();
+  // }
+  config.secure.ssl = false;
 };
 
 /**
@@ -131,26 +131,24 @@ const initGlobalConfig = () => {
   validateEnvironmentVariable();
 
   // Get the default assets
-  const defaultAssets = require(path.resolve(__dirname, './assets/default')).default;
+  const defaultAssets = require('./assets/default').default;
 
   // Get the current assets
-  const environmentAssets =
-    require(path.resolve(__dirname, './assets/', process.env.NODE_ENV)).default || {};
+  const environmentAssets = require(`./assets/${process.env.NODE_ENV}`).default || {};
 
   // Merge assets
   const assets = _.merge(defaultAssets, environmentAssets);
 
   // Get the default config
-  const defaultConfig = require(path.resolve(__dirname, './env/default')).default;
+  const defaultConfig = require('./env/default').default;
 
   // Get the current config
-  const environmentConfig =
-    require(path.resolve(__dirname, './env/', process.env.NODE_ENV)).default || {};
+  const environmentConfig = require(`./env/${process.env.NODE_ENV}`).default || {};
 
   // Merge config files
   const config = _.merge(defaultConfig, environmentConfig);
 
-  config.pkg = require(path.resolve(__dirname, '../package.json'));
+  config.pkg = require('../package.json');
 
   // Initialize global globbed files
   initGlobalConfigFiles(config, assets);

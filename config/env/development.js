@@ -16,8 +16,8 @@ export default {
   },
   API: {
     vrtme: {
-      URL: 'http://localhost:3000/api/vendor/singlevehicle',
-      TOKEN: '298736ce066e46a009b29535ee68da2037afd6fc',
+      URL: 'https://api.vrtme.ie/api/vendor/singlevehicle',
+      // TOKEN: '298736ce066e46a009b29535ee68da2037afd6fc', // Test token
     },
   },
   log: {

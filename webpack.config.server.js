@@ -22,6 +22,8 @@ module.exports = {
   },
 
   module: {
+    unknownContextCritical: false,
+    unknownContextRegExp: /^.\/.*$/,
     rules: [
       {
         test: /\.js$/,

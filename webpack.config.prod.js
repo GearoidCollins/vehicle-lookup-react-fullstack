@@ -27,6 +27,8 @@ module.exports = {
   },
 
   module: {
+    unknownContextCritical: false,
+    unknownContextRegExp: /^.\/.*$/,
     rules: [
       {
         test: /\.s?css$/,
@@ -42,9 +44,7 @@ module.exports = {
                 importLoaders: 1,
               },
             },
-            {
-              loader: 'sass-loader',
-            },
+
             {
               loader: 'postcss-loader',
               options: {
@@ -61,6 +61,9 @@ module.exports = {
                   }),
                 ],
               },
+            },
+            {
+              loader: 'sass-loader',
             },
           ],
         }),
