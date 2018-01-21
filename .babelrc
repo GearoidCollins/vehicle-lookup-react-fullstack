@@ -1,0 +1,15 @@
+{
+  "presets": ["react", "env", "stage-0"],
+  "plugins": ["react-hot-loader/babel"],
+  "env": {
+    "production": {
+      "presets": [
+        "env",
+        "react",
+        "react-optimize",
+        ["es2015", { "modules": false }],
+        "stage-0"
+      ]
+    }
+  }
+}

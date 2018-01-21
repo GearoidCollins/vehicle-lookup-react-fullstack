@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/* CSS Document */
+
+$prefix: "-moz-", "-webkit-", "-o-", "-ms-", "";
+// ********************
+// fadeIn
+// ********************
+@mixin keyframe-fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@-webkit-keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@-o-keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@-ms-keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@mixin fadeIn( $arg ) {
+  $keyframe-name: fadeIn;
+  $duration: $arg;
+  @each $p in $prefix {
+    #{$p}animation: $keyframe-name $duration;
+  }
+}
+// e.g. @include fadeIn( 2s );
+
+/**
+* standard transition
+*/
+@mixin transition($time:"0.5s", $it:"all") {
+  @include css3(transition, $it $time ease-in-out);
+}
+
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/**
+* Navigation styles
+* Example:
+* @include css3(transition, 0.5s);
+*/
+
+@mixin css3($property, $value) {
+  @each $prefix in -webkit-, -moz-, -ms-, -o-, "" {
+    #{$prefix}#{$property}: $value;
+  }
+}

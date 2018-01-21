@@ -1,0 +1,15 @@
+.viewPort {
+  padding: 10%;
+  min-height: 650px;
+  background: #253242;
+}
+@media only screen and (max-width: 1250px) {
+  .viewPort {
+    padding: 10% 5%;
+  }
+}
+@media only screen and (max-width: 1110px) {
+  .viewPort {
+    padding: 7% 5%;
+  }
+}
